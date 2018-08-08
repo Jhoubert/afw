@@ -1,2 +1,2 @@
 # afw
-Framework para PHP, ligero potente y ordenado.
+Framework para PHP, ligero, potente y ordenado.

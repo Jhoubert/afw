@@ -13,10 +13,10 @@ define('FORCE_PROTOCOL',false);
 define('PROTOCOL',"http");
 
 // MYSQL CONFIG.
-define('MySQL_U', 'modernizacion');
-define('MySQL_P', '1q2w3e');
-define('MySQL_S', 'localhost');
-define('MySQL_DB', 'denwa');
+define('MySQL_U', 'user');
+define('MySQL_P', 'pass');
+define('MySQL_S', 'server');
+define('MySQL_DB', 'database');
 
 //USAR MULTI IDIOMAS / lang
 define('USE_LANG',False);

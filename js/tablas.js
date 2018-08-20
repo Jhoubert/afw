@@ -1,9 +1,8 @@
-<script type="text/javascript">
-
 /*
  * Autor: Jhoubert Rincon
  * Fecha: 10 Enero 2017
- * Actualizado: 01 Junio 2018
+ * Actualización [V-0.2]: 01 Junio 2018
+ * Actualización [V-0.32]: 20 Agosto 2018
  *  - 	Veflat,C.A
 */
 
@@ -40,7 +39,6 @@ posRules:function(data,idTable){
 
 */
 
-
 function loadTable(data,idTable){
 
 	document.getElementById(idTable+"_loading").style.display = "none";
@@ -76,9 +74,7 @@ function loadTable(data,idTable){
 		tbody[0].innerHTML=tml;
 
 		var prevBtn = '<li class="page-item disabled"><a class="page-link" id="table_prev" onClick="prevTbl(this)" aria-label="Previous"><span aria-hidden="true">'+BtnAnterior+'</span><span class="sr-only">Previous</span></a></li><li class="page-item active"><a class="page-link" onClick=\"setPag(1,this);\">1 <span class="sr-only">(current)</span></a></li>';
-
 		var nextBtn = '<li class="page-item"><a class="page-link" id="table_next" onClick="nextTbl(this)" aria-label="Next"><span aria-hidden="true">'+BtnSiguiente+'</span><span class="sr-only">Next</span></a></li>';
-
 		var puntosBtn = "<li class=\"page-item disabled\"><a class=\"page-link\" href=\"javascript:void(0);\"> "+BtnPuntos+" </a></li>";
 
 		numPages=numPages+( 1 == active ? prevBtn : prevBtn.replace('disabled','').replace('page-item active','page-item') + ((parseInt(active)-(parseInt(maxSides)))>2 ? puntosBtn : '') );
@@ -88,17 +84,18 @@ function loadTable(data,idTable){
 			if(num>1) numPages=numPages+"<li class=\"page-item\"><a class=\"page-link\" onClick=\"setPag("+num+",this);\">"+num+"</a></li>";
 		}
 
-		if(active>1 && active<pags) numPages= numPages + "<li class=\"page-item active\"><a class=\"page-link\" href=\"javascript:void(0);\">"+active+" <span class=\"sr-only\">(current)</span></a></li>";
+		if(active>1 && active<pags){
+			numPages= numPages + "<li class=\"page-item active\"><a class=\"page-link\" href=\"javascript:void(0);\">"+active+" <span class=\"sr-only\">(current)</span></a></li>";
+		}
 
 		for (iy=(parseInt(active)+1); iy < (parseInt(active)+parseInt(maxSides)+1); iy++) { 
 			num = iy;	
 			if(num<pags) numPages=numPages+"<li class=\"page-item\"><a class=\"page-link\" onClick=\"setPag("+num+",this);\">"+num+"</a></li>";
 		}
 
-		if(pags>1)
-
+		if(pags>1){
 			numPages=numPages+(pags==active? (num<pags-1 ? puntosBtn : '')+'<li class="page-item active"><a class="page-link" href="javascript:void(0);">'+pags+' <span class="sr-only">(current)</span></a></li>':(num<(pags-1) ? puntosBtn : '')+"<li class=\"page-item\"><a class=\"page-link\" onClick=\"setPag("+pags+",this);\">"+pags+"</a></li>" + nextBtn );
-
+		}
 		pag.innerHTML=numPages; 
 
 	}
@@ -108,13 +105,9 @@ function loadTable(data,idTable){
 		var pag = document.getElementById(idTable+"_pag");
 		cols = document.getElementById(idTable).rows[0].cells.length;
 
-		
 		tbody[0].innerHTML='<tr><td colspan="'+cols+'" align="center"><br><b>No hay registros para mostrar</b></td></tr>';
 		pag.innerHTML="<li class=\"page-item disabled\"><a class=\"page-link\" href=\"javascript:void(0);\"> 0 </a></li>"; 
-
-
 	}
-
 
 	if (typeof posRules === "function") { 
 		posRules(data,idTable);
@@ -236,6 +229,3 @@ for (iwww = 0; iwww < tablas.length; iwww++) {
 	initTbl(tablas[iwww].id);
 }
 
-
-
-</script>

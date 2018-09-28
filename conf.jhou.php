@@ -1,4 +1,4 @@
-<?php // VEFLAT 0.8V
+<?php // VEFLAT 0.8V - 
 
 ini_set("display_errors",1);
 if (!is_writable(session_save_path())) {

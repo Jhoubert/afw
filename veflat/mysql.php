@@ -27,7 +27,7 @@ class Vmysql extends alienClass{
 			die("Ha ocurrido un error al conectar a la base de datos.");
 		}
 		$this->conexion->select_db(($DB!=NULL?$DB:MySQL_DB));
-		$this->execMysql("SET CHAetDataRACTER SET utf8");
+		$this->execMysql("SET CHARACTER SET utf8");
 
 		$_POST = $this->recursiveScape($_POST);
 		$_GET = $this->recursiveScape($_GET);
